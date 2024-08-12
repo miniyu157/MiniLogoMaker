@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Copyright>Copyright © 2024 KlxPiao</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
