@@ -73,19 +73,9 @@ namespace MiniLogoMaker.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap moon {
+        internal static System.Drawing.Bitmap newicon {
             get {
-                object obj = ResourceManager.GetObject("moon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap sun {
-            get {
-                object obj = ResourceManager.GetObject("sun", resourceCulture);
+                object obj = ResourceManager.GetObject("newicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

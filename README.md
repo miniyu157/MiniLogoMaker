@@ -4,6 +4,8 @@
 
 [README_EN.md](/README_EN.md)
 
+[CHANGELOG.md](/CHANGELOG.md)
+
 ## 功能
 
 - **大小和阴影调整：** 可以修改徽标的大小、阴影位置和颜色。
@@ -28,7 +30,7 @@
 
 ## 使用
 
-可以在 [releases](https://github.com/miniyu157/MiniLogoMaker/releases) 页面下载本程序的最新版本
+可以在 [releases](https://github.com/miniyu157/MiniLogoMaker/releases) 页面下载最新版本的 ```MiniLogoMaker```
 
 或者使用 Visual Studio 或其他支持 .NET 的 IDE 打开解决方案构建并运行项目
 

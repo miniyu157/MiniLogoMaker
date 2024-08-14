@@ -33,19 +33,27 @@ namespace MiniLogoMaker
             KlxPiaoTrackBar.InteractionStyleClass interactionStyleClass1 = new KlxPiaoTrackBar.InteractionStyleClass();
             KlxPiaoAPI.Animation animation1 = new KlxPiaoAPI.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            RoundedButton.DisabledStyleClass disabledStyleClass1 = new RoundedButton.DisabledStyleClass();
             RoundedButton.InteractionStyleClass interactionStyleClass2 = new RoundedButton.InteractionStyleClass();
             KlxPiaoAPI.Animation animation2 = new KlxPiaoAPI.Animation();
             KlxPiaoAPI.Animation animation3 = new KlxPiaoAPI.Animation();
+            RoundedButton.DisabledStyleClass disabledStyleClass2 = new RoundedButton.DisabledStyleClass();
             RoundedButton.InteractionStyleClass interactionStyleClass3 = new RoundedButton.InteractionStyleClass();
             KlxPiaoAPI.Animation animation4 = new KlxPiaoAPI.Animation();
             KlxPiaoTrackBar.InteractionStyleClass interactionStyleClass4 = new KlxPiaoTrackBar.InteractionStyleClass();
             KlxPiaoTrackBar.InteractionStyleClass interactionStyleClass5 = new KlxPiaoTrackBar.InteractionStyleClass();
             KlxPiaoAPI.Animation animation5 = new KlxPiaoAPI.Animation();
+            RoundedButton.DisabledStyleClass disabledStyleClass3 = new RoundedButton.DisabledStyleClass();
             RoundedButton.InteractionStyleClass interactionStyleClass6 = new RoundedButton.InteractionStyleClass();
             KlxPiaoAPI.Animation animation6 = new KlxPiaoAPI.Animation();
             KlxPiaoAPI.Animation animation7 = new KlxPiaoAPI.Animation();
+            RoundedButton.DisabledStyleClass disabledStyleClass4 = new RoundedButton.DisabledStyleClass();
             RoundedButton.InteractionStyleClass interactionStyleClass7 = new RoundedButton.InteractionStyleClass();
             KlxPiaoAPI.Animation animation8 = new KlxPiaoAPI.Animation();
+            KlxPiaoAPI.Animation animation9 = new KlxPiaoAPI.Animation();
+            RoundedButton.DisabledStyleClass disabledStyleClass5 = new RoundedButton.DisabledStyleClass();
+            RoundedButton.InteractionStyleClass interactionStyleClass8 = new RoundedButton.InteractionStyleClass();
+            KlxPiaoAPI.Animation animation10 = new KlxPiaoAPI.Animation();
             originalImageBox = new ImageBox();
             shadowImageBox = new ImageBox();
             label1 = new Label();
@@ -63,7 +71,7 @@ namespace MiniLogoMaker
             widthTrackBar = new KlxPiaoTrackBar();
             heightTrackBar = new KlxPiaoTrackBar();
             klxPiaoPanel1 = new KlxPiaoPanel();
-            versionShowLabel = new KlxPiaoLabel();
+            versionButton = new RoundedButton();
             label6 = new Label();
             klxPiaoPanel2 = new KlxPiaoPanel();
             githubButton = new RoundedButton();
@@ -271,6 +279,10 @@ namespace MiniLogoMaker
             animation1.FPS = 30;
             animation1.Time = 150;
             saveFileButton.ColorAnimationConfig = animation1;
+            disabledStyleClass1.BackColor = Color.Empty;
+            disabledStyleClass1.BorderColor = Color.Empty;
+            disabledStyleClass1.ForeColor = Color.Empty;
+            saveFileButton.DisabledStyle = disabledStyleClass1;
             saveFileButton.ForeColor = Color.White;
             interactionStyleClass2.DownBackColor = Color.FromArgb(70, 0, 13);
             interactionStyleClass2.DownBorderColor = Color.Empty;
@@ -309,6 +321,10 @@ namespace MiniLogoMaker
             animation3.FPS = 30;
             animation3.Time = 150;
             saveClipboardButton.ColorAnimationConfig = animation3;
+            disabledStyleClass2.BackColor = Color.Empty;
+            disabledStyleClass2.BorderColor = Color.Empty;
+            disabledStyleClass2.ForeColor = Color.Empty;
+            saveClipboardButton.DisabledStyle = disabledStyleClass2;
             saveClipboardButton.ForeColor = Color.White;
             interactionStyleClass3.DownBackColor = Color.FromArgb(70, 0, 13);
             interactionStyleClass3.DownBorderColor = Color.Empty;
@@ -397,7 +413,7 @@ namespace MiniLogoMaker
             klxPiaoPanel1.BackColor = Color.FromArgb(30, 30, 30);
             klxPiaoPanel1.BaseBackColor = Color.FromArgb(30, 30, 30);
             klxPiaoPanel1.BorderColor = Color.Pink;
-            klxPiaoPanel1.Controls.Add(versionShowLabel);
+            klxPiaoPanel1.Controls.Add(versionButton);
             klxPiaoPanel1.Controls.Add(label6);
             klxPiaoPanel1.Controls.Add(klxPiaoPanel2);
             klxPiaoPanel1.Controls.Add(heightTrackBar);
@@ -414,25 +430,48 @@ namespace MiniLogoMaker
             klxPiaoPanel1.Size = new Size(240, 397);
             klxPiaoPanel1.TabIndex = 42;
             // 
-            // versionShowLabel
+            // versionButton
             // 
-            versionShowLabel.AutoSize = false;
-            versionShowLabel.BackColor = Color.FromArgb(30, 30, 30);
-            versionShowLabel.BaseBackColor = Color.FromArgb(30, 30, 30);
-            versionShowLabel.BorderColor = Color.FromArgb(199, 199, 199);
-            versionShowLabel.BorderSize = 1;
-            versionShowLabel.CornerRadius = new KlxPiaoAPI.CornerRadius(10F, 10F, 10F, 10F);
-            versionShowLabel.Enabled = false;
-            versionShowLabel.ForeColor = Color.White;
-            versionShowLabel.IsEnableBorder = true;
-            versionShowLabel.Location = new Point(128, 336);
-            versionShowLabel.Name = "versionShowLabel";
-            versionShowLabel.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            versionShowLabel.Size = new Size(95, 40);
-            versionShowLabel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            versionShowLabel.TabIndex = 72;
-            versionShowLabel.Text = "Version: 0.0.0";
-            versionShowLabel.TextAlign = ContentAlignment.MiddleCenter;
+            versionButton.BackColor = Color.FromArgb(30, 30, 30);
+            versionButton.BaseBackColor = Color.FromArgb(30, 30, 30);
+            versionButton.BorderColor = Color.Pink;
+            animation5.Easing = new PointF[]
+    {
+    (PointF)resources.GetObject("animation5.Easing"),
+    (PointF)resources.GetObject("animation5.Easing1")
+    };
+            animation5.FPS = 30;
+            animation5.Time = 150;
+            versionButton.ColorAnimationConfig = animation5;
+            disabledStyleClass3.BackColor = Color.Empty;
+            disabledStyleClass3.BorderColor = Color.White;
+            disabledStyleClass3.ForeColor = Color.Empty;
+            versionButton.DisabledStyle = disabledStyleClass3;
+            versionButton.Enabled = false;
+            versionButton.ForeColor = Color.White;
+            interactionStyleClass6.DownBackColor = Color.FromArgb(70, 0, 13);
+            interactionStyleClass6.DownBorderColor = Color.Empty;
+            interactionStyleClass6.DownForeColor = Color.Empty;
+            interactionStyleClass6.DownSize = new Size(0, 0);
+            interactionStyleClass6.OverBackColor = Color.FromArgb(100, 0, 17);
+            interactionStyleClass6.OverBorderColor = Color.Empty;
+            interactionStyleClass6.OverForeColor = Color.Empty;
+            interactionStyleClass6.OverSize = new Size(0, 0);
+            versionButton.InteractionStyle = interactionStyleClass6;
+            versionButton.IsEnableAnimation = true;
+            versionButton.Location = new Point(128, 336);
+            versionButton.Name = "versionButton";
+            versionButton.Size = new Size(95, 40);
+            animation6.Easing = new PointF[]
+    {
+    (PointF)resources.GetObject("animation6.Easing"),
+    (PointF)resources.GetObject("animation6.Easing1")
+    };
+            animation6.FPS = 100;
+            animation6.Time = 300;
+            versionButton.SizeAnimationConfig = animation6;
+            versionButton.TabIndex = 57;
+            versionButton.Text = "Version: 0.0.0";
             // 
             // label6
             // 
@@ -463,41 +502,45 @@ namespace MiniLogoMaker
             githubButton.BackColor = Color.FromArgb(30, 30, 30);
             githubButton.BaseBackColor = Color.FromArgb(30, 30, 30);
             githubButton.BorderColor = Color.Pink;
-            animation5.Easing = new PointF[]
+            animation7.Easing = new PointF[]
     {
-    (PointF)resources.GetObject("animation5.Easing"),
-    (PointF)resources.GetObject("animation5.Easing1")
+    (PointF)resources.GetObject("animation7.Easing"),
+    (PointF)resources.GetObject("animation7.Easing1")
     };
-            animation5.FPS = 30;
-            animation5.Time = 150;
-            githubButton.ColorAnimationConfig = animation5;
+            animation7.FPS = 30;
+            animation7.Time = 150;
+            githubButton.ColorAnimationConfig = animation7;
+            disabledStyleClass4.BackColor = Color.Empty;
+            disabledStyleClass4.BorderColor = Color.Empty;
+            disabledStyleClass4.ForeColor = Color.Empty;
+            githubButton.DisabledStyle = disabledStyleClass4;
             githubButton.ForeColor = Color.White;
             githubButton.Image = Properties.Resources.github_light_128x128;
             githubButton.ImageAlign = ContentAlignment.MiddleLeft;
             githubButton.ImageOffset = new Point(10, 0);
             githubButton.ImageResizing = new SizeF(0.6F, 0.6F);
             githubButton.ImageResizingFormat = KlxPiaoAPI.ResizeMode.Percentage;
-            interactionStyleClass6.DownBackColor = Color.FromArgb(70, 0, 13);
-            interactionStyleClass6.DownBorderColor = Color.Empty;
-            interactionStyleClass6.DownForeColor = Color.Empty;
-            interactionStyleClass6.DownSize = new Size(0, 0);
-            interactionStyleClass6.OverBackColor = Color.FromArgb(100, 0, 17);
-            interactionStyleClass6.OverBorderColor = Color.Empty;
-            interactionStyleClass6.OverForeColor = Color.Empty;
-            interactionStyleClass6.OverSize = new Size(0, 0);
-            githubButton.InteractionStyle = interactionStyleClass6;
+            interactionStyleClass7.DownBackColor = Color.FromArgb(70, 0, 13);
+            interactionStyleClass7.DownBorderColor = Color.Empty;
+            interactionStyleClass7.DownForeColor = Color.Empty;
+            interactionStyleClass7.DownSize = new Size(0, 0);
+            interactionStyleClass7.OverBackColor = Color.FromArgb(100, 0, 17);
+            interactionStyleClass7.OverBorderColor = Color.Empty;
+            interactionStyleClass7.OverForeColor = Color.Empty;
+            interactionStyleClass7.OverSize = new Size(0, 0);
+            githubButton.InteractionStyle = interactionStyleClass7;
             githubButton.IsEnableAnimation = true;
             githubButton.Location = new Point(17, 336);
             githubButton.Name = "githubButton";
             githubButton.Size = new Size(95, 40);
-            animation6.Easing = new PointF[]
+            animation8.Easing = new PointF[]
     {
-    (PointF)resources.GetObject("animation6.Easing"),
-    (PointF)resources.GetObject("animation6.Easing1")
+    (PointF)resources.GetObject("animation8.Easing"),
+    (PointF)resources.GetObject("animation8.Easing1")
     };
-            animation6.FPS = 100;
-            animation6.Time = 300;
-            githubButton.SizeAnimationConfig = animation6;
+            animation8.FPS = 100;
+            animation8.Time = 300;
+            githubButton.SizeAnimationConfig = animation8;
             githubButton.TabIndex = 56;
             githubButton.Text = "Github";
             githubButton.TextAlign = ContentAlignment.MiddleRight;
@@ -519,39 +562,43 @@ namespace MiniLogoMaker
             selectFileButton.BackColor = Color.FromArgb(30, 30, 30);
             selectFileButton.BaseBackColor = Color.FromArgb(30, 30, 30);
             selectFileButton.BorderColor = Color.FromArgb(180, 201, 252);
-            animation7.Easing = new PointF[]
+            animation9.Easing = new PointF[]
     {
-    (PointF)resources.GetObject("animation7.Easing"),
-    (PointF)resources.GetObject("animation7.Easing1")
+    (PointF)resources.GetObject("animation9.Easing"),
+    (PointF)resources.GetObject("animation9.Easing1")
     };
-            animation7.FPS = 30;
-            animation7.Time = 150;
-            selectFileButton.ColorAnimationConfig = animation7;
+            animation9.FPS = 30;
+            animation9.Time = 150;
+            selectFileButton.ColorAnimationConfig = animation9;
+            disabledStyleClass5.BackColor = Color.Empty;
+            disabledStyleClass5.BorderColor = Color.Empty;
+            disabledStyleClass5.ForeColor = Color.Empty;
+            selectFileButton.DisabledStyle = disabledStyleClass5;
             selectFileButton.ForeColor = Color.White;
             selectFileButton.ImageAlign = ContentAlignment.MiddleLeft;
             selectFileButton.ImageResizing = new SizeF(0.75F, 0.75F);
             selectFileButton.ImageResizingFormat = KlxPiaoAPI.ResizeMode.Percentage;
-            interactionStyleClass7.DownBackColor = Color.FromArgb(2, 27, 85);
-            interactionStyleClass7.DownBorderColor = Color.Empty;
-            interactionStyleClass7.DownForeColor = Color.Empty;
-            interactionStyleClass7.DownSize = new Size(0, 0);
-            interactionStyleClass7.OverBackColor = Color.FromArgb(4, 37, 117);
-            interactionStyleClass7.OverBorderColor = Color.Empty;
-            interactionStyleClass7.OverForeColor = Color.Empty;
-            interactionStyleClass7.OverSize = new Size(0, 0);
-            selectFileButton.InteractionStyle = interactionStyleClass7;
+            interactionStyleClass8.DownBackColor = Color.FromArgb(2, 27, 85);
+            interactionStyleClass8.DownBorderColor = Color.Empty;
+            interactionStyleClass8.DownForeColor = Color.Empty;
+            interactionStyleClass8.DownSize = new Size(0, 0);
+            interactionStyleClass8.OverBackColor = Color.FromArgb(4, 37, 117);
+            interactionStyleClass8.OverBorderColor = Color.Empty;
+            interactionStyleClass8.OverForeColor = Color.Empty;
+            interactionStyleClass8.OverSize = new Size(0, 0);
+            selectFileButton.InteractionStyle = interactionStyleClass8;
             selectFileButton.IsEnableAnimation = true;
             selectFileButton.Location = new Point(169, 11);
             selectFileButton.Name = "selectFileButton";
             selectFileButton.Size = new Size(100, 33);
-            animation8.Easing = new PointF[]
+            animation10.Easing = new PointF[]
     {
-    (PointF)resources.GetObject("animation8.Easing"),
-    (PointF)resources.GetObject("animation8.Easing1")
+    (PointF)resources.GetObject("animation10.Easing"),
+    (PointF)resources.GetObject("animation10.Easing1")
     };
-            animation8.FPS = 100;
-            animation8.Time = 300;
-            selectFileButton.SizeAnimationConfig = animation8;
+            animation10.FPS = 100;
+            animation10.Time = 300;
+            selectFileButton.SizeAnimationConfig = animation10;
             selectFileButton.TabIndex = 60;
             selectFileButton.Text = "Select File";
             // 
@@ -578,14 +625,14 @@ namespace MiniLogoMaker
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
             ClientSize = new Size(1056, 556);
+            Controls.Add(foreColorPanel);
+            Controls.Add(shadowColorPanel);
+            Controls.Add(backColorPanel);
             Controls.Add(statusLabel);
             Controls.Add(selectFileButton);
             Controls.Add(klxPiaoPanel1);
             Controls.Add(label3);
-            Controls.Add(foreColorPanel);
-            Controls.Add(shadowColorPanel);
             Controls.Add(label2);
-            Controls.Add(backColorPanel);
             Controls.Add(offsetPointBar);
             Controls.Add(zoomTrackBar);
             Controls.Add(shadowPointBar);
@@ -594,6 +641,7 @@ namespace MiniLogoMaker
             Controls.Add(shadowImageBox);
             Controls.Add(label4);
             EnableResizeButton = false;
+            ForeColor = Color.White;
             IconDrawOffset = new Point(13, 11);
             InteractionColorScale = 0.5F;
             Name = "MainWindow";
@@ -633,8 +681,8 @@ namespace MiniLogoMaker
         private RoundedButton githubButton;
         private RoundedButton selectFileButton;
         private KlxPiaoControls.KlxPiaoLabel statusLabel;
-        private KlxPiaoLabel versionShowLabel;
         private Label label6;
         private KlxPiaoPanel klxPiaoPanel2;
+        private RoundedButton versionButton;
     }
 }

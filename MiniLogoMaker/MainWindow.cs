@@ -9,17 +9,21 @@ namespace MiniLogoMaker
     public partial class MainWindow : KlxPiaoForm
     {
         private const string githubLink = "https://github.com/miniyu157/MiniLogoMaker";
+        private const string updateCheckLink = "https://api.github.com/repos/miniyu157/MiniLogoMaker/releases/latest";
+
         private Image? Image { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            versionShowLabel.Text = $"Version: {GetProductVersion()}";
+            versionButton.Text = $"Version: {GetProductVersion()}";
 
             selectFileButton.Click += SelectFileButton_Click;
             saveFileButton.Click += SaveFileButton_Click;
             saveClipboardButton.Click += SaveClipboardButton_Click;
             githubButton.Click += GithubButton_Click;
+            versionButton.Click += VersionButton_Click;
 
             zoomTrackBar.ValueChanged += (sender, e) => RefreshDraw();
             shadowPointBar.ValueChanged += (sender, e) => RefreshDraw();
@@ -29,6 +33,8 @@ namespace MiniLogoMaker
 
             shadowPointBar.ValueChanged -= (sender, e) => RefreshDraw();
             offsetPointBar.ValueChanged -= (sender, e) => RefreshDraw();
+
+            Load += (sender, e) => UpdateCheck();
 
             AttachColorPanelevents(backColorPanel);
             AttachColorPanelevents(foreColorPanel);
@@ -49,6 +55,90 @@ namespace MiniLogoMaker
                         RefreshDraw();
                     }
                 };
+            }
+        }
+
+        private string? updateContent;
+        private string? downloadUrl;
+        private string? latestVersion;
+
+        private void VersionButton_Click(object? sender, EventArgs e)
+        {
+            KlxPiaoMessageBox message = new(this)
+            {
+                Title = "Update",
+                Content = $"Version: {GetProductVersion()} -> {latestVersion}\r\nMessage: \r\n\r\n{updateContent}\r\n\r\nURL: {downloadUrl}",
+                Buttons = MessageBoxButtons.OKCancel,
+                InitializeDefaultValue = false,
+                ContentTopMargin = 0,
+                ButtonTextSpacing = 16,
+                ButtonBottomMargin = 25,
+                ButtonTexts = ["Download", "Cancel"]
+            };
+            message.DialogForm.TitleBoxBackColor = TitleBoxBackColor;
+            message.DialogForm.TitleBoxForeColor = TitleBoxForeColor;
+            message.DialogForm.InteractionColorScale = InteractionColorScale;
+            message.DialogForm.BackColor = BackColor;
+            message.DialogForm.ForeColor = ForeColor;
+            message.DialogForm.IconDrawOffset = IconDrawOffset;
+            message.DialogForm.TitleTextOffset = TitleTextOffset;
+            message.DialogForm.TitleBoxDragThreshold = 50;
+            message.InteractionStyle = githubButton.InteractionStyle;
+            message.ButtonBorderColor = githubButton.BorderColor;
+
+            if (message.Show() == DialogResult.OK)
+            {
+                Process.Start(new ProcessStartInfo() { FileName = downloadUrl, UseShellExecute = true });
+            }
+        }
+
+        private async void UpdateCheck()
+        {
+            GithubUpdateChecker updateChecker = new(updateCheckLink);
+            try
+            {
+                await updateChecker.DownloadContentAsync();
+            }
+            catch (HttpRequestException ex)
+            {
+                KlxPiaoMessageBox message = new(this)
+                {
+                    Content = $"Check for updates failed.\r\n\r\nURL: {updateCheckLink}\r\nMessage: {ex.Message}",
+                    Title = Application.ProductName ?? "Tip:",
+                    InitializeDefaultValue = false,
+                    ContentTopMargin = 0,
+                    ButtonTextSpacing = 16,
+                    ButtonBottomMargin = 25
+                };
+                message.DialogForm.TitleBoxBackColor = TitleBoxBackColor;
+                message.DialogForm.TitleBoxForeColor = TitleBoxForeColor;
+                message.DialogForm.InteractionColorScale = InteractionColorScale;
+                message.DialogForm.BackColor = BackColor;
+                message.DialogForm.ForeColor = ForeColor;
+                message.DialogForm.IconDrawOffset = IconDrawOffset;
+                message.DialogForm.TitleTextOffset = TitleTextOffset;
+                message.DialogForm.TitleBoxDragThreshold = 50;
+                message.InteractionStyle = githubButton.InteractionStyle;
+                message.ButtonBorderColor = githubButton.BorderColor;
+
+                message.Show();
+                return;
+            }
+
+            updateChecker.GetUpdateData(out latestVersion, out updateContent, out downloadUrl);
+
+            if (latestVersion != null && GetProductVersion() != latestVersion)
+            {
+                //change button status
+                versionButton.Image = Properties.Resources.newicon.ReplaceColor(Color.White, Color.Pink);
+                versionButton.ImageResizingFormat = ResizeMode.Percentage;
+                versionButton.ImageResizing = new SizeF(0.75F, 0.75F);
+                versionButton.Text = GetProductVersion();
+                versionButton.TextAlign = ContentAlignment.MiddleRight;
+                versionButton.ImageAlign = ContentAlignment.MiddleLeft;
+                versionButton.TextOffset = new Point(-14, 0);
+                versionButton.ImageOffset = new Point(14, 0);
+                versionButton.Enabled = true;
             }
         }
 
@@ -120,6 +210,12 @@ namespace MiniLogoMaker
 
         private async void RefreshDraw()
         {
+            if (widthTrackBar.Value == 0 || heightTrackBar.Value == 0)
+            {
+                shadowImageBox.Image = null;
+                return;
+            }
+
             if (Image != null)
             {
                 statusLabel.Text = "Status: Generating...";

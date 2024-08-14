@@ -2,6 +2,8 @@
 
 Lightweight Shadow Logo Generator
 
+[CHANGELOG.md](/CHANGELOG.md)
+
 ## Features
 
 - **Size and Shadow Adjustment:** Modify the size, shadow position, and color of the logo.
@@ -26,7 +28,7 @@ Lightweight Shadow Logo Generator
 
 ## Usage
 
-You can download the latest version of this application from the [releases](https://github.com/miniyu157/MiniLogoMaker/releases) page.
+You can download the latest version of `MiniLogoMaker` from the [releases](https://github.com/miniyu157/MiniLogoMaker/releases) page.
 
 Alternatively, you can open the solution in Visual Studio or any other .NET-supported IDE to build and run the project.
 
