@@ -7,16 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Copyright>Copyright © 2024 KlxPiao</Copyright>
-	<Version>1.0.1</Version>
+	<Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="KlxPiaoAPI">
-      <HintPath>..\..\KlxPiao\KlxPiaoControls\bin\Release\net8.0-windows\publish\KlxPiaoAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="KlxPiaoControls">
-      <HintPath>..\..\KlxPiao\KlxPiaoControls\bin\Release\net8.0-windows\publish\KlxPiaoControls.dll</HintPath>
-    </Reference>
+    <PackageReference Include="KlxPiaoControls" Version="1.2.0.3" />
   </ItemGroup>
 
   <ItemGroup>

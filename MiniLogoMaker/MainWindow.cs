@@ -61,7 +61,11 @@ namespace MiniLogoMaker
         private string? updateContent;
         private string? downloadUrl;
         private string? latestVersion;
-
+        private readonly string[] dialogSyncedFormProperties = ["TitleBoxBackColor", "TitleBoxForeColor", "InteractionColorScale", "BackColor", "ForeColor", "IconDrawOffset", "TitleTextOffset"];
+        private readonly int dialogContentTopMargin = 0;
+        private readonly int dialogButtonTextSpacing = 16;
+        private readonly int dialogButtonBottomMargin = 16;
+        private readonly int dialogTitleBoxDragThreshold = 50;
         private void VersionButton_Click(object? sender, EventArgs e)
         {
             KlxPiaoMessageBox message = new(this)
@@ -70,19 +74,13 @@ namespace MiniLogoMaker
                 Content = $"Version: {GetProductVersion()} -> {latestVersion}\r\nMessage: \r\n\r\n{updateContent}\r\n\r\nURL: {downloadUrl}",
                 Buttons = MessageBoxButtons.OKCancel,
                 InitializeDefaultValue = false,
-                ContentTopMargin = 0,
-                ButtonTextSpacing = 16,
-                ButtonBottomMargin = 25,
+                ContentTopMargin = dialogContentTopMargin,
+                ButtonTextSpacing = dialogButtonTextSpacing,
+                ButtonBottomMargin = dialogButtonBottomMargin,
+                SyncedFormProperties = dialogSyncedFormProperties,
                 ButtonTexts = ["Download", "Cancel"]
             };
-            message.DialogForm.TitleBoxBackColor = TitleBoxBackColor;
-            message.DialogForm.TitleBoxForeColor = TitleBoxForeColor;
-            message.DialogForm.InteractionColorScale = InteractionColorScale;
-            message.DialogForm.BackColor = BackColor;
-            message.DialogForm.ForeColor = ForeColor;
-            message.DialogForm.IconDrawOffset = IconDrawOffset;
-            message.DialogForm.TitleTextOffset = TitleTextOffset;
-            message.DialogForm.TitleBoxDragThreshold = 50;
+            message.DialogForm.TitleBoxDragThreshold = dialogTitleBoxDragThreshold;
             message.InteractionStyle = githubButton.InteractionStyle;
             message.ButtonBorderColor = githubButton.BorderColor;
 
@@ -106,18 +104,12 @@ namespace MiniLogoMaker
                     Content = $"Check for updates failed.\r\n\r\nURL: {updateCheckLink}\r\nMessage: {ex.Message}",
                     Title = Application.ProductName ?? "Tip:",
                     InitializeDefaultValue = false,
-                    ContentTopMargin = 0,
-                    ButtonTextSpacing = 16,
-                    ButtonBottomMargin = 25
+                    ContentTopMargin = dialogContentTopMargin,
+                    ButtonTextSpacing = dialogButtonTextSpacing,
+                    ButtonBottomMargin = dialogButtonBottomMargin,
+                    SyncedFormProperties = dialogSyncedFormProperties
                 };
-                message.DialogForm.TitleBoxBackColor = TitleBoxBackColor;
-                message.DialogForm.TitleBoxForeColor = TitleBoxForeColor;
-                message.DialogForm.InteractionColorScale = InteractionColorScale;
-                message.DialogForm.BackColor = BackColor;
-                message.DialogForm.ForeColor = ForeColor;
-                message.DialogForm.IconDrawOffset = IconDrawOffset;
-                message.DialogForm.TitleTextOffset = TitleTextOffset;
-                message.DialogForm.TitleBoxDragThreshold = 50;
+                message.DialogForm.TitleBoxDragThreshold = dialogTitleBoxDragThreshold;
                 message.InteractionStyle = githubButton.InteractionStyle;
                 message.ButtonBorderColor = githubButton.BorderColor;
 
